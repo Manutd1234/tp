@@ -32,7 +32,7 @@ public class RemarkStorageTest {
     public void toModelType_legacyRecordWithoutRemark_defaultsToEmpty() throws Exception {
         Person original = new PersonBuilder().build();
         JsonAdaptedPerson legacy = new JsonAdaptedPerson(original.getName().fullName, original.getPhone().value,
-                original.getEmail().value, original.getAddress().value, null, null);
+                original.getEmail().value, null, null);
         assertEquals(original, legacy.toModelType());
     }
 }
