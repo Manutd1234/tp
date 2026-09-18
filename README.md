@@ -13,6 +13,20 @@ The project currently contains the AddressBook Level 3 (AB3) starter application
 
 See the [TrackCall project website](https://ay2627s1-cs2103t-w12-1.github.io/tp/) for the user guide, developer guide, and setup instructions.
 
+## Local development
+
+TrackCall targets Java 25. With a Java 25 JDK installed, start the application with:
+
+```shell
+./gradlew run
+```
+
+Run the automated tests before sharing changes:
+
+```shell
+./gradlew test
+```
+
 ## Acknowledgements
 
 This project is based on [AddressBook Level 3](https://se-education.org/addressbook-level3), part of the [SE-EDU initiative](https://se-education.org). The starter provides the contact-management application, architecture, tests, and documentation.
