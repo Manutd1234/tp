@@ -23,7 +23,7 @@ AddressBook Level 3 (AB3) is a **desktop application for managing contacts, opti
    A GUI similar to the one below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![Ui](images/Ui.png)
 
-1. Type a command in the command box and press Enter to execute it. For example, type **`help`** and press Enter to open the help window.<br>
+1. Type a command in the command box and press Enter to execute it. For example, type **`help`** and press Enter to show the command synopsis in the result display.<br>
    Some example commands you can try:
 
    * `list` : Lists all contacts.
@@ -58,19 +58,25 @@ AddressBook Level 3 (AB3) is a **desktop application for managing contacts, opti
 * Parameters can be in any order.<br>
   For example, if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
 
-* Extraneous parameters for commands that take no parameters, such as `help`, `list`, `exit`, and `clear`, are ignored.<br>
-  For example, `help 123` is interpreted as `help`.
+* The `help` command accepts at most one valid command keyword. For example, `help add` shows the syntax and usage rules for `add`.
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 </div>
 
 ### Viewing help: `help`
 
-Shows a message explaining how to access the help page.
+Shows a concise command synopsis in the result display. A command-specific topic can be viewed with `help COMMAND`.
 
 ![help message](images/helpMessage.png)
 
-Format: `help`
+Format: `help [COMMAND]`
+
+Examples:
+* `help`
+* `help add`
+* `help find`
+
+Command names are case-sensitive. Leading and trailing whitespace is ignored, and repeated whitespace between tokens is collapsed. `help` rejects unknown topics, flags such as `-h`, and multiple command arguments.
 
 
 ### Adding a person: `add`
