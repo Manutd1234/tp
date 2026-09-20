@@ -3,6 +3,10 @@ layout: page
 title: User Guide
 ---
 
+> **Development note:** This guide describes the current AB3 starter application.
+> TrackCall-specific requirements are listed in the [Developer Guide](DeveloperGuide.md#appendix-requirements).
+> Planned features, such as tag filtering and bulk tag editing, are not available in this starter version.
+
 AddressBook Level 3 (AB3) is a **desktop application for managing contacts, optimized for use through a Command Line Interface (CLI)** while retaining the benefits of a Graphical User Interface (GUI). If you type quickly, AB3 can help you manage contacts faster than traditional GUI applications.
 
 * Table of Contents
@@ -21,7 +25,7 @@ AddressBook Level 3 (AB3) is a **desktop application for managing contacts, opti
 
 1. Open a terminal, `cd` to the folder containing the JAR file, and run `java -jar addressbook.jar`.<br>
    A GUI similar to the one below should appear in a few seconds. Note how the app contains some sample data.<br>
-   ![Ui](images/Ui.png)
+   ![AB3 starter application](images/Ui-ab3.png)
 
 1. Type a command in the command box and press Enter to execute it. For example, type **`help`** and press Enter to open the help window.<br>
    Some example commands you can try:
