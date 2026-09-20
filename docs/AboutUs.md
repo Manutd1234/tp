@@ -38,15 +38,14 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer
 * Responsibilities: Data
 
-### Jean Doe
+### Ian Abiel Wangsa
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/manutd1234.png" width="200px" alt="Ian Abiel Wangsa">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](https://github.com/Manutd1234)]
 
 * Role: Developer
-* Responsibilities: Dev Ops + Threading
+* Responsibilities: List All Persons (`list`) and Clear All Entries (`clear`) features
 
 ### James Doe
 
