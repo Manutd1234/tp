@@ -3,43 +3,57 @@ layout: page
 title: About Us
 ---
 
-We are team CS2103T-W12-1 from the
-[School of Computing, National University of Singapore](https://www.comp.nus.edu.sg).
-We are building TrackCall to help membership secretaries manage member records and group tags.
+We are a team based in the [School of Computing, National University of Singapore](https://www.comp.nus.edu.sg).
+
+You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
 
-### Calvin
+### John Doe
 
-[[github](https://github.com/CAYOPAN)]
+<img src="images/johndoe.png" width="200px">
 
-* Role: Developer
-* Responsibilities: Exit Program, Delete Member, and Find Member features
+[[homepage](http://www.comp.nus.edu.sg/~damithch)]
+[[github](https://github.com/johndoe)]
+[[portfolio](team/johndoe.md)]
 
-### Eron
+* Role: Project Advisor
 
-[[github](https://github.com/rondth)]
+### Jane Doe
 
-* Role: Developer
-* Responsibilities: Automatic Data Saving and Filter Member by Tag features
+<img src="images/johndoe.png" width="200px">
 
-### Glory
+[[github](http://github.com/johndoe)]
+[[portfolio](team/johndoe.md)]
 
-[[github](https://github.com/glory-lion)]
+* Role: Team Lead
+* Responsibilities: UI
 
-* Role: Developer
-* Responsibilities: Editing the Data File and Bulk Tag Editing features
+### Johnny Doe
 
-### Ian Abiel Wangsa
+<img src="images/johndoe.png" width="200px">
 
-[[github](https://github.com/Manutd1234)]
-
-* Role: Developer
-* Responsibilities: List All Persons and Clear All Entries features
-
-### Noah
-
-[[github](https://github.com/Asdao)]
+[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
 
 * Role: Developer
-* Responsibilities: Help, Add Member, and Edit Member features
+* Responsibilities: Data
+
+### Jean Doe
+
+<img src="images/johndoe.png" width="200px">
+
+[[github](http://github.com/johndoe)]
+[[portfolio](team/johndoe.md)]
+
+* Role: Developer
+* Responsibilities: Dev Ops + Threading
+
+### James Doe
+
+<img src="images/johndoe.png" width="200px">
+
+[[github](http://github.com/johndoe)]
+[[portfolio](team/johndoe.md)]
+
+* Role: Developer
+* Responsibilities: UI
