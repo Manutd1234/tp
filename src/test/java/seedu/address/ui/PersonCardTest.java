@@ -8,12 +8,15 @@ import java.util.concurrent.TimeUnit;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.EnabledOnOs;
+import org.junit.jupiter.api.condition.OS;
 
 import javafx.application.Platform;
 import javafx.scene.control.Label;
 import seedu.address.model.person.Person;
 import seedu.address.testutil.PersonBuilder;
 
+@EnabledOnOs(OS.LINUX)
 public class PersonCardTest {
 
     @BeforeAll

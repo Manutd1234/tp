@@ -26,9 +26,6 @@ checkstyle {
 
 test {
     useJUnitPlatform()
-    systemProperty 'glass.platform', 'Monocle'
-    systemProperty 'monocle.platform', 'Headless'
-    systemProperty 'prism.order', 'sw'
     systemProperty 'javafx.cachedir', layout.buildDirectory.dir('javafx-cache').get().asFile.absolutePath
     finalizedBy jacocoTestReport
 }
@@ -84,7 +81,6 @@ dependencies {
     implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.7.4'
 
     testImplementation "org.junit.jupiter:junit-jupiter-api:${jUnitVersion}"
-    testImplementation 'org.testfx:openjfx-monocle:17.0.10'
 
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${jUnitVersion}"
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.14.4'
