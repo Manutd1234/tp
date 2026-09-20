@@ -70,9 +70,19 @@ public class RemarkCommandTest {
     @Test
     public void equals_differentIndexOrRemark_notEqual() {
         RemarkCommand command = new RemarkCommand(Index.fromOneBased(1), new Remark("Note"));
+        assertEquals(command, command);
         assertEquals(command, new RemarkCommand(Index.fromOneBased(1), new Remark("Note")));
         assertNotEquals(command, new RemarkCommand(Index.fromOneBased(2), new Remark("Note")));
         assertNotEquals(command, new RemarkCommand(Index.fromOneBased(1), new Remark("Changed")));
         assertNotEquals(command, null);
+    }
+
+    @Test
+    public void toStringMethod() {
+        Index index = Index.fromOneBased(1);
+        Remark remark = new Remark("Note");
+        RemarkCommand command = new RemarkCommand(index, remark);
+        String expected = RemarkCommand.class.getCanonicalName() + "{index=" + index + ", remark=" + remark + "}";
+        assertEquals(expected, command.toString());
     }
 }

@@ -26,6 +26,10 @@ checkstyle {
 
 test {
     useJUnitPlatform()
+    systemProperty 'glass.platform', 'Monocle'
+    systemProperty 'monocle.platform', 'Headless'
+    systemProperty 'prism.order', 'sw'
+    systemProperty 'javafx.cachedir', layout.buildDirectory.dir('javafx-cache').get().asFile.absolutePath
     finalizedBy jacocoTestReport
 }
 
@@ -48,17 +52,31 @@ task coverage(type: JacocoReport) {
 dependencies {
     String jUnitVersion = '5.14.4'
     String javaFxVersion = '17.0.7'
+    boolean isArmMac = System.getProperty('os.name').toLowerCase().contains('mac')
+            && System.getProperty('os.arch') == 'aarch64'
 
     implementation "org.openjfx:javafx-base:${javaFxVersion}:win"
+    if (isArmMac) {
+        implementation "org.openjfx:javafx-base:${javaFxVersion}:mac-aarch64"
+    }
     implementation "org.openjfx:javafx-base:${javaFxVersion}:mac"
     implementation "org.openjfx:javafx-base:${javaFxVersion}:linux"
     implementation "org.openjfx:javafx-controls:${javaFxVersion}:win"
+    if (isArmMac) {
+        implementation "org.openjfx:javafx-controls:${javaFxVersion}:mac-aarch64"
+    }
     implementation "org.openjfx:javafx-controls:${javaFxVersion}:mac"
     implementation "org.openjfx:javafx-controls:${javaFxVersion}:linux"
     implementation "org.openjfx:javafx-fxml:${javaFxVersion}:win"
+    if (isArmMac) {
+        implementation "org.openjfx:javafx-fxml:${javaFxVersion}:mac-aarch64"
+    }
     implementation "org.openjfx:javafx-fxml:${javaFxVersion}:mac"
     implementation "org.openjfx:javafx-fxml:${javaFxVersion}:linux"
     implementation "org.openjfx:javafx-graphics:${javaFxVersion}:win"
+    if (isArmMac) {
+        implementation "org.openjfx:javafx-graphics:${javaFxVersion}:mac-aarch64"
+    }
     implementation "org.openjfx:javafx-graphics:${javaFxVersion}:mac"
     implementation "org.openjfx:javafx-graphics:${javaFxVersion}:linux"
 
@@ -66,6 +84,7 @@ dependencies {
     implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.7.4'
 
     testImplementation "org.junit.jupiter:junit-jupiter-api:${jUnitVersion}"
+    testImplementation 'org.testfx:openjfx-monocle:17.0.10'
 
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${jUnitVersion}"
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.14.4'
