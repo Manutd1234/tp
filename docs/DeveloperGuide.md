@@ -489,9 +489,10 @@ Precondition: The app is closed and the secretary has backed up the data file.
 
 * 3a. The file is missing. TrackCall loads sample members and reports the missing file. It creates a file
   only after a valid data-changing command. The use case ends.
-* 3b. The file has invalid JSON, invalid fields, or duplicate members. TrackCall loads zero members,
-  reports the problem, and leaves the original file untouched. The secretary closes the app and repairs
-  or restores the file before returning to step 2. No partial import occurs.
+* 3b. The file has invalid JSON, invalid fields, or duplicate members. Invalid fields include a tag that
+  does not meet rule 3 (1 to 30 ASCII letters or digits, case-sensitive, no internal spaces). TrackCall loads
+  zero members, reports the problem, and leaves the original file untouched. The secretary closes the app and
+  repairs or restores the file before returning to step 2. No partial import occurs.
 * 3c. The file cannot be read. TrackCall loads zero members, shows the operating-system error, and leaves
   the file untouched. The secretary fixes access before returning to step 2.
 
