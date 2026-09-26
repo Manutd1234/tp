@@ -41,12 +41,11 @@ We are a team based in the [School of Computing, National University of Singapor
 * Role: Developer
 * Responsibilities: List All Persons (`list`) and Clear All Entries (`clear`) features
 
-### James Doe
+### Noah
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/asdao.png" width="200px" alt="Noah">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](https://github.com/Asdao)]
 
 * Role: Developer
-* Responsibilities: UI
+* Responsibilities: CLI workflows for adding and editing member records, and command help.
