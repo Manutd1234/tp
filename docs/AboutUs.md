@@ -28,16 +28,16 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer
 * Responsibilities: Automatic Data Saving and Filter Member by Tag (filter) features
 
-### Johnny Doe
+### Glory Charity Lion
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/glory-lion.png" width="200px">
 
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
+[[github](http://github.com/glory-lion)] 
 
 * Role: Developer
-* Responsibilities: Data
+* Responsibilities: Editing the Data File and Bulk Tag Editing features
 
-### Ian Abiel Wangsa
+### Ian Abiel Wanqgsa
 
 <img src="images/manutd1234.png" width="200px" alt="Ian Abiel Wangsa">
 
