@@ -702,7 +702,7 @@ overwrite an invalid file; restore or repair it first if the original contents a
 
 These are acceptance requirements for the intended product, not results already measured on v1.1.
 They include relevant [course product constraints][course-constraints]. The performance workload
-is a test target, not a restriction on accepted records.
+is a test target, not a restriction on accepted records or command length.
 
 [course-constraints]: https://nus-cs2103-ay2627-s1.github.io/website/admin/tp-constraints.html
 
@@ -715,7 +715,7 @@ is a test target, not a restriction on accepted records.
 | NFR05 | Display usability | At 1920 x 1080 or higher with 100% or 125% scaling, controls and text remain readable without layout overlap. At 1280 x 720 or higher with 150% scaling, every function remains usable. Long rosters and help text remain accessible by scrolling. |
 | NFR06 | Local data privacy | Core operations do not transmit member records to external services. The MVP provides no login or encryption; protection of the local file relies on the user's operating-system access controls. |
 | NFR07 | Inspectable storage | Member data is stored locally as human-editable UTF-8 JSON, with no DBMS required. The saved data can be read and corrected using an ordinary text editor while the app is closed. |
-| NFR08 | Response time | With 500 members and a data file of at most 1 MB, each normal in-app command completes within 2 seconds on a computer with a 2 GHz dual-core CPU, 4 GB RAM, local SSD, and no competing heavy workload. Measure from submission to displayed result, including any save; exclude startup and shutdown. Record the OS, Java version, hardware, dataset, and timings when testing. |
+| NFR08 | Response time | With 500 members and a writable data file of at most 1 MB, each valid in-app command of at most 256 characters completes within 2 seconds on a computer with a 2 GHz dual-core CPU, 4 GB RAM, local SSD, and no competing heavy workload. Measure from submission to displayed result, including any save; exclude startup and shutdown. Record the OS, Java version, hardware, dataset, and timings when testing. |
 | NFR09 | Persistence reliability | After a data-changing command reports success, a normal restart retains the saved roster. A simulated write failure leaves the previous saved file intact and is never reported as success. In-memory recovery follows rule 10, including the rollback required for `clear`. |
 
 Input validation, duplicate rejection, filtering, and no-op behaviour are functional requirements
