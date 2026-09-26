@@ -354,10 +354,11 @@ Related story: US02.
 
 **Command syntax**: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...`. The four
 contact fields are required and can appear in any order. Tags are optional and may be
-repeated. Names contain only letters, digits, and spaces; phone numbers contain at least
-three digits; email addresses use the `local-part@domain` format; addresses are non-empty;
-and each tag is one case-sensitive alphanumeric word of 1 to 30 characters. Repeated
-identical tags in one command are stored only once. A member is a duplicate when its
+repeated. Names are nonblank and contain only ASCII letters, digits, and spaces; phone
+numbers contain only ASCII digits and are at least three digits long. Email addresses use
+the `local-part@domain` format, and addresses are non-empty. Each tag contains 1 to 30 ASCII
+letters or digits and is case-sensitive. Repeated identical tags in one command are stored
+only once. A member is a duplicate when its
 trimmed name, phone, email, and address all match an existing record; tags do not affect
 this comparison.
 
