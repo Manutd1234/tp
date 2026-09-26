@@ -407,9 +407,19 @@ These use cases describe planned behaviour; they must be tested as the features 
 
 Related story: US02.
 
+**Command syntax**: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]...`. The four
+contact fields are required and can appear in any order. Tags are optional and may be
+repeated. Names are nonblank and contain only ASCII letters, digits, and spaces; phone
+numbers contain only ASCII digits and are at least three digits long. Email addresses use
+the `local-part@domain` format, and addresses are non-empty. Each tag contains 1 to 30 ASCII
+letters or digits and is case-sensitive. Repeated identical tags in one command are stored
+only once. A member is a duplicate when its
+trimmed name, phone, email, and address all match an existing record; tags do not affect
+this comparison.
+
 **MSS**
 
-1. The secretary enters the new member's name, phone, email, address, and optional tags.
+1. The secretary enters the new member's required contact fields and optional tags.
 2. TrackCall checks the input and checks for a duplicate record.
 3. TrackCall adds the member, saves the roster, and shows the full list with the new member last.
 4. TrackCall reports the added member's details. The use case ends.
@@ -425,6 +435,14 @@ Related story: US02.
 #### UC02: Find and update a member
 
 Related stories: US03, US04, US05.
+
+**Command syntax**: `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]...`.
+The index refers to the current displayed list. At least one field must be supplied, and
+fields can appear in any order. Supplied contact fields follow the same validation rules as
+UC01; omitted fields remain unchanged. If one or more tags are supplied, they replace the
+member's existing tags, and repeated identical tags are stored only once. A lone `t/` clears
+all tags and cannot be combined with a non-empty tag. The edited record must not duplicate
+another member under the identity rule in UC01.
 
 **MSS**
 
@@ -516,17 +534,36 @@ There is no confirmation or undo. A successful clear requires a backup for recov
 
 Related story: US01.
 
+**Command syntax**: `help` or `help COMMAND`, where `COMMAND` is one valid, lowercase
+command keyword. Leading and trailing whitespace is ignored, and repeated whitespace
+between tokens is treated as a single separator. At most one command keyword may follow
+`help`.
+
 **MSS**
 
-1. The secretary requests help.
-2. TrackCall shows the command summary in the result display.
-3. The secretary requests help for one command, such as `help tagall`.
-4. TrackCall shows that command's syntax, examples, and rules. The use case ends.
+1. The secretary enters `help` to see the available commands.
+2. TrackCall displays the command syntax quick-reference in the result display and reports
+   `Showing command syntax quick-reference.` The use case ends.
+
+Alternatively:
+
+1. The secretary enters `help COMMAND`, such as `help tagall`.
+2. TrackCall displays a Vim-like help topic containing that command's syntax, description,
+   and usage rules, and reports `Showing help for COMMAND.` The use case ends.
 
 **Extensions**
 
-* 3a. The topic is unknown or more than one topic is given. TrackCall reports the error.
-  The secretary can return to step 3. Member data and the displayed member list stay unchanged.
+* 1a. The secretary supplies an unknown or incorrectly cased topic. TrackCall reports
+  `No help entry found for "COMMAND". Type help for a list of available commands.`
+  The secretary can retry at step 1.
+* 1b. The secretary supplies more than one topic. TrackCall reports
+  `Only one command can be inspected at a time. Usage: help [COMMAND]`. The secretary can
+  retry at step 1.
+* 1c. The secretary uses an invalid help flag format, such as `-help` or `-h`. TrackCall
+  reports `Unknown command format. Usage: help [COMMAND]`. The secretary can retry at step 1.
+
+All help requests leave member data and the displayed member list unchanged. Help topics
+are case-sensitive; command names must use their standard lowercase spelling.
 
 #### UC07: Load a manually edited data file
 
