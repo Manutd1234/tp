@@ -37,7 +37,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer
 * Responsibilities: Editing the Data File and Bulk Tag Editing features
 
-### Ian Abiel Wanqgsa
+### Ian Abiel Wangsa
 
 <img src="images/manutd1234.png" width="200px" alt="Ian Abiel Wangsa">
 
