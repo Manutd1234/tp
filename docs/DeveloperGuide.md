@@ -239,6 +239,61 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 _{more aspects and alternatives to be added}_
 
+### Automatic data saving
+
+#### Implementation
+
+Automatic data saving is handled by `LogicManager#execute(String)`. After a command is parsed and executed
+successfully, `LogicManager` passes the complete address book from `Model#getAddressBook()` to
+`Storage#saveAddressBook(ReadOnlyAddressBook)`. As the complete address book is saved, members hidden from the
+displayed list are included in the data file.
+
+`StorageManager` delegates the save operation to `JsonAddressBookStorage`, which creates the data file and its
+parent directories if needed before serialising the address book as JSON. The file is stored at
+`data/addressbook.json`, relative to the application's working directory, and its path is displayed in the
+status bar.
+
+Saving is performed after every successfully executed command, including commands that do not change member
+data. If parsing or command execution fails, saving is not attempted. A normal command result is returned only
+after saving succeeds, so no separate save-success message is shown.
+
+If saving fails, `LogicManager` converts the `IOException` into a `CommandException` for display to the user.
+Any model change made before the failed save remains in memory, including a change made by `clear`.
+
+At startup, an existing data file is loaded into the model. If the file is missing, sample data is loaded. If
+the file cannot be read, TrackCall starts with an empty address book. Startup does not immediately save the
+address book.
+
+#### Proposed handling for planned commands
+
+When `tagall` and `untagall` are implemented, each valid operation will trigger automatic saving, including a
+valid operation that makes no changes. The proposed `filter` command will not save because it changes only the
+displayed list. Read-only commands such as `help`, `list`, `find`, `filter`, and `exit` will also skip saving.
+
+![Automatic data saving UI mock-up](images/AutomaticSavingData.png)
+
+### \[Proposed\] Filter members by tag
+
+#### Proposed Implementation
+
+The `filter` command displays members with a specified tag without changing member data. Its format is:
+
+`filter t/TAG`
+
+Exactly one `t/TAG` parameter is accepted. The tag must contain 1 to 30 letters or numbers with no internal
+spaces. Surrounding spaces are ignored, while matching is exact and case-sensitive.
+
+`filter` narrows the currently displayed list, so it can be applied after `find` or another `filter`. It never
+restores hidden members. Running `list` clears the active search and filters. Results keep their address-book
+order, are renumbered from 1, and use the message `N member(s) listed with tag "TAG".` A zero-match result is
+still successful, and later index-based commands use the displayed indices. No save is attempted.
+
+An invalid command leaves the current list, active filter, and member data unchanged. Errors include a missing
+or empty tag, invalid characters or spaces, a tag longer than 30 characters, multiple tags, and unknown
+prefixes.
+
+![Filter members by tag UI mock-up](images/FilterTag.png)
+
 ### \[Proposed\] Data archiving
 
 _{Explain here how the data archiving feature will be implemented}_
