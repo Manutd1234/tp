@@ -239,6 +239,50 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 _{more aspects and alternatives to be added}_
 
+### \[Proposed\] Automatic data saving
+
+#### Proposed Implementation
+
+TrackCall automatically saves the complete address book to `./data/addressbook.json`, relative to the
+application's working directory. This includes members hidden by a search or filter. The user cannot provide
+a different file name, path, format, or save option.
+
+Saving is attempted after every valid `add`, `edit`, `delete`, `clear`, `tagall`, or `untagall` operation,
+including valid no-op updates. The `help`, `list`, `find`, `filter`, and `exit` commands do not save. Invalid
+commands and application startup do not write the file.
+
+A successful command is reported only after saving finishes, with no separate save-success message. If
+saving fails, TrackCall shows `Could not save data to file: [DETAILS]` and preserves the previous valid file.
+Except for `clear`, the change remains in memory. A failed `clear` restores the previous records and view.
+
+At startup, a missing file loads sample members and is created only after a valid data-changing command. An
+invalid file loads zero members, reports the loading error, and remains unchanged until a valid data-changing
+command saves the current roster.
+
+![Automatic data saving](images/AutomaticSavingData.png)
+
+### \[Proposed\] Filter members by tag
+
+#### Proposed Implementation
+
+The `filter` command displays members with a specified tag without changing member data. Its format is:
+
+`filter t/TAG`
+
+Exactly one `t/TAG` parameter is accepted. The tag must contain 1 to 30 letters or numbers with no internal
+spaces. Surrounding spaces are ignored, while matching is exact and case-sensitive.
+
+`filter` narrows the currently displayed list, so it can be applied after `find` or another `filter`. It never
+restores hidden members. Running `list` clears the active search and filters. Results keep their address-book
+order, are renumbered from 1, and use the message `N member(s) listed with tag "TAG".` A zero-match result is
+still successful, and later index-based commands use the displayed indices. No save is attempted.
+
+An invalid command leaves the current list, active filter, and member data unchanged. Errors include a missing
+or empty tag, invalid characters or spaces, a tag longer than 30 characters, multiple tags, and unknown
+prefixes.
+
+![Filter members by tag](images/FilterTag.png)
+
 ### \[Proposed\] Data archiving
 
 _{Explain here how the data archiving feature will be implemented}_
