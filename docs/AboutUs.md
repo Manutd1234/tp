@@ -32,7 +32,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 <img src="images/glory-lion.png" width="200px">
 
-[[github](http://github.com/glory-lion)] 
+[[github](http://github.com/glory-lion)]
 
 * Role: Developer
 * Responsibilities: Editing the Data File and Bulk Tag Editing features
@@ -46,12 +46,11 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer
 * Responsibilities: List All Persons (`list`) and Clear All Entries (`clear`) features
 
-### James Doe
+### Noah
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/asdao.png" width="200px" alt="Noah">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](https://github.com/Asdao)]
 
 * Role: Developer
-* Responsibilities: UI
+* Responsibilities: CLI workflows for adding and editing member records, and command help.
