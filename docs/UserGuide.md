@@ -3,6 +3,10 @@ layout: page
 title: User Guide
 ---
 
+> **Development note:** This guide describes the current AB3 starter application.
+> TrackCall-specific requirements are listed in the [Developer Guide](DeveloperGuide.md#appendix-requirements).
+> Planned features, such as tag filtering and bulk tag editing, are not available in this starter version.
+
 AddressBook Level 3 (AB3) is a **desktop application for managing contacts, optimized for use through a Command Line Interface (CLI)** while retaining the benefits of a Graphical User Interface (GUI). If you type quickly, AB3 can help you manage contacts faster than traditional GUI applications.
 
 * Table of Contents
@@ -21,9 +25,9 @@ AddressBook Level 3 (AB3) is a **desktop application for managing contacts, opti
 
 1. Open a terminal, `cd` to the folder containing the JAR file, and run `java -jar addressbook.jar`.<br>
    A GUI similar to the one below should appear in a few seconds. Note how the app contains some sample data.<br>
-   ![Ui](images/Ui.png)
+   ![AB3 starter application](images/Ui-ab3.png)
 
-1. Type a command in the command box and press Enter to execute it. For example, type **`help`** and press Enter to show the command synopsis in the result display.<br>
+1. Type a command in the command box and press Enter to execute it. For example, type **`help`** and press Enter to open the help window.<br>
    Some example commands you can try:
 
    * `list` : Lists all contacts.
@@ -58,25 +62,19 @@ AddressBook Level 3 (AB3) is a **desktop application for managing contacts, opti
 * Parameters can be in any order.<br>
   For example, if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
 
-* The `help` command accepts at most one valid command keyword. For example, `help add` shows the syntax and usage rules for `add`.
+* Extraneous parameters for commands that take no parameters, such as `help`, `list`, `exit`, and `clear`, are ignored.<br>
+  For example, `help 123` is interpreted as `help`.
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 </div>
 
 ### Viewing help: `help`
 
-Shows a concise command synopsis in the result display. A command-specific topic can be viewed with `help COMMAND`.
+Shows a message explaining how to access the help page.
 
 ![help message](images/helpMessage.png)
 
-Format: `help [COMMAND]`
-
-Examples:
-* `help`
-* `help add`
-* `help find`
-
-Command names are case-sensitive. Leading and trailing whitespace is ignored, and repeated whitespace between tokens is collapsed. `help` rejects unknown topics, flags such as `-h`, and multiple command arguments.
+Format: `help`
 
 
 ### Adding a person: `add`

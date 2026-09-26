@@ -78,18 +78,7 @@ public class AddressBookParserTest {
     @Test
     public void parseCommand_help() throws Exception {
         assertTrue(parser.parseCommand(HelpCommand.COMMAND_WORD) instanceof HelpCommand);
-        assertTrue(parser.parseCommand(HelpCommand.COMMAND_WORD + "   add ") instanceof HelpCommand);
-    }
-
-    @Test
-    public void parseCommand_helpInvalidArguments_throwsParseException() {
-        assertThrows(ParseException.class, HelpCommand.MESSAGE_INVALID_COMMAND_FORMAT, () ->
-                parser.parseCommand("help -h"));
-        assertThrows(ParseException.class, HelpCommand.MESSAGE_MULTIPLE_COMMANDS, () ->
-                parser.parseCommand("help add find"));
-        String unknownTopicMessage = String.format(HelpCommand.MESSAGE_UNKNOWN_TOPIC_FORMAT, "foo");
-        assertThrows(ParseException.class, unknownTopicMessage, () ->
-                parser.parseCommand("help foo"));
+        assertTrue(parser.parseCommand(HelpCommand.COMMAND_WORD + " 3") instanceof HelpCommand);
     }
 
     @Test

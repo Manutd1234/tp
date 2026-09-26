@@ -3,16 +3,53 @@
 [![CI Status](https://github.com/AY2627S1-CS2103T-W12-1/tp/workflows/Java%20CI/badge.svg)](https://github.com/AY2627S1-CS2103T-W12-1/tp/actions)
 [![codecov](https://codecov.io/gh/AY2627S1-CS2103T-W12-1/tp/branch/master/graph/badge.svg)](https://app.codecov.io/gh/AY2627S1-CS2103T-W12-1/tp)
 
-TrackCall is being developed for membership secretaries who maintain their organisation's member contact records. The planned product provides a keyboard-based workflow for keeping a roster of up to 500 members accurate and easy to share as members renew, change roles, or move between groups.
+TrackCall helps membership secretaries keep their organisation's member records up to date.
+It is a desktop app for a roster of up to 500 members. Type commands to find members,
+update contact details, and organise groups without editing each record one at a time.
 
-The project currently contains the AddressBook Level 3 (AB3) starter application. TrackCall-specific features are under development.
+## Planned features
 
-![Current starter application](docs/images/Ui.png)
+* Add, view, edit, and remove member records.
+* Find members by name and narrow the results by group tags.
+* Add or remove a tag for everyone in the displayed list with one command.
+* Read command help in the app and save changes to a local data file automatically.
+
+## Planned interface
+
+![TrackCall mockup showing committee members after filtering by tag](docs/images/Ui.png)
+
+This is a mockup of the intended product. It keeps AB3's command box, result display,
+member list, and data-file status bar. The TrackCall features above are planned;
+the current application still contains the AB3 starter behaviour.
 
 ## Documentation
 
-See the [TrackCall project website](https://ay2627s1-cs2103t-w12-1.github.io/tp/) for the user guide, developer guide, and setup instructions.
+* [Project website](https://ay2627s1-cs2103t-w12-1.github.io/tp/)
+* [User Guide](https://ay2627s1-cs2103t-w12-1.github.io/tp/UserGuide.html)
+* [Developer Guide](https://ay2627s1-cs2103t-w12-1.github.io/tp/DeveloperGuide.html)
+* [About Us](https://ay2627s1-cs2103t-w12-1.github.io/tp/AboutUs.html)
+
+The Developer Guide describes the planned requirements. The User Guide still describes
+the starter application and will be updated as TrackCall features are implemented.
+
+## Local development
+
+Use Java 25. Start the application with:
+
+```shell
+./gradlew run
+```
+
+Run the automated tests with:
+
+```shell
+./gradlew test
+```
+
+See the [setup instructions](docs/SettingUp.md) for the full development setup.
 
 ## Acknowledgements
 
-This project is based on [AddressBook Level 3](https://se-education.org/addressbook-level3), part of the [SE-EDU initiative](https://se-education.org). The starter provides the contact-management application, architecture, tests, and documentation.
+This project is based on [AddressBook Level 3](https://se-education.org/addressbook-level3),
+created by the [SE-EDU initiative](https://se-education.org).
+The starter provides the application structure, contact-management code, tests, and documentation.
