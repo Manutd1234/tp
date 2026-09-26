@@ -239,27 +239,38 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 _{more aspects and alternatives to be added}_
 
-### \[Proposed\] Automatic data saving
+### Automatic data saving
 
-#### Proposed Implementation
+#### Implementation
 
-TrackCall automatically saves the complete address book to `./data/addressbook.json`, relative to the
-application's working directory. This includes members hidden by a search or filter. The user cannot provide
-a different file name, path, format, or save option.
+Automatic data saving is handled by `LogicManager#execute(String)`. After a command is parsed and executed
+successfully, `LogicManager` passes the complete address book from `Model#getAddressBook()` to
+`Storage#saveAddressBook(ReadOnlyAddressBook)`. As the complete address book is saved, members hidden from the
+displayed list are included in the data file.
 
-Saving is attempted after every valid `add`, `edit`, `delete`, `clear`, `tagall`, or `untagall` operation,
-including valid no-op updates. The `help`, `list`, `find`, `filter`, and `exit` commands do not save. Invalid
-commands and application startup do not write the file.
+`StorageManager` delegates the save operation to `JsonAddressBookStorage`, which creates the data file and its
+parent directories if needed before serialising the address book as JSON. The file is stored at
+`data/addressbook.json`, relative to the application's working directory, and its path is displayed in the
+status bar.
 
-A successful command is reported only after saving finishes, with no separate save-success message. If
-saving fails, TrackCall shows `Could not save data to file: [DETAILS]` and preserves the previous valid file.
-Except for `clear`, the change remains in memory. A failed `clear` restores the previous records and view.
+Saving is performed after every successfully executed command, including commands that do not change member
+data. If parsing or command execution fails, saving is not attempted. A normal command result is returned only
+after saving succeeds, so no separate save-success message is shown.
 
-At startup, a missing file loads sample members and is created only after a valid data-changing command. An
-invalid file loads zero members, reports the loading error, and remains unchanged until a valid data-changing
-command saves the current roster.
+If saving fails, `LogicManager` converts the `IOException` into a `CommandException` for display to the user.
+Any model change made before the failed save remains in memory, including a change made by `clear`.
 
-![Automatic data saving](images/AutomaticSavingData.png)
+At startup, an existing data file is loaded into the model. If the file is missing, sample data is loaded. If
+the file cannot be read, TrackCall starts with an empty address book. Startup does not immediately save the
+address book.
+
+#### Proposed handling for planned commands
+
+When `tagall` and `untagall` are implemented, each valid operation will trigger automatic saving, including a
+valid operation that makes no changes. The proposed `filter` command will not save because it changes only the
+displayed list. Read-only commands such as `help`, `list`, `find`, `filter`, and `exit` will also skip saving.
+
+![Automatic data saving UI mock-up](images/AutomaticSavingData.png)
 
 ### \[Proposed\] Filter members by tag
 
@@ -281,7 +292,7 @@ An invalid command leaves the current list, active filter, and member data uncha
 or empty tag, invalid characters or spaces, a tag longer than 30 characters, multiple tags, and unknown
 prefixes.
 
-![Filter members by tag](images/FilterTag.png)
+![Filter members by tag UI mock-up](images/FilterTag.png)
 
 ### \[Proposed\] Data archiving
 
