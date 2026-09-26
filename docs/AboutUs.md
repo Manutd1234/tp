@@ -5,19 +5,14 @@ title: About Us
 
 We are a team based in the [School of Computing, National University of Singapore](https://www.comp.nus.edu.sg).
 
-You can reach us at the email `seer[at]comp.nus.edu.sg`
-
 ## Project team
 
-### John Doe
+### Calvin
 
-<img src="images/johndoe.png" width="200px">
+[[github](https://github.com/CAYOPAN)]
 
-[[homepage](http://www.comp.nus.edu.sg/~damithch)]
-[[github](https://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
-
-* Role: Project Advisor
+* Role: Developer
+* Responsibilities: Exit Program, Delete Member, and Find Member features
 
 ### Eron Dathan
 
@@ -30,9 +25,9 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Glory Charity Lion
 
-<img src="images/glory-lion.png" width="200px">
+<img src="images/glory-lion.png" width="200px" alt="Glory Charity Lion">
 
-[[github](http://github.com/glory-lion)] 
+[[github](https://github.com/glory-lion)]
 
 * Role: Developer
 * Responsibilities: Editing the Data File and Bulk Tag Editing features
