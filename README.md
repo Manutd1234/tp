@@ -9,10 +9,10 @@ update contact details, and organise groups without editing each record one at a
 
 ## Planned features
 
-* Add, view, edit, and remove member records.
+* Add and edit member records with `add` and `edit`, and view or remove records as needed.
 * Find members by name and narrow the results by group tags.
 * Add or remove a tag for everyone in the displayed list with one command.
-* Read command help in the app and save changes to a local data file automatically.
+* Look up command syntax with `help` or `help [COMMAND]`, and save changes to a local data file automatically.
 
 ## Planned interface
 
